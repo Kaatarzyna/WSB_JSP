@@ -6,6 +6,7 @@ import wsb.jsp.models.Painting;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class PaintingRepository {
@@ -23,8 +24,8 @@ public class PaintingRepository {
     ));
 
 
-    public List<Painting> findAll() {
-        return paintings;
+    public List<Painting> findAll(String paintingName) {
+        return paintings.stream().filter(p -> p.getName().toLowerCase().contains(paintingName)).collect(Collectors.toList());
     }
 
 }

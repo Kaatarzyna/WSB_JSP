@@ -49,6 +49,13 @@ public class JspController {
         return modelAndView;
     }
 
+    @RequestMapping("/paintings")
+    public ModelAndView paintings(@RequestParam(required = false, defaultValue = "") String paintingName) {
+        ModelAndView modelAndView = new ModelAndView("paintings/index");
+        modelAndView.addObject("paintings", paintingRepository.findAll(paintingName));
+        return modelAndView;
+    }
+
 
 
 }
